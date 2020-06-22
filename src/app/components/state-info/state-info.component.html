@@ -1,0 +1,21 @@
+<div>
+    <h3>State [{{stateId}}] Historical Data</h3>
+
+    <ejs-chart id="chart-container" [primaryXAxis]='primaryXAxis' [tooltip]='tooltip' [title]='title'>
+      <e-series-collection>
+        <e-series [dataSource]='stateHistorical' type='Line' xName='date' yName='positive' name='Positive'></e-series>
+      </e-series-collection>
+    </ejs-chart>
+
+    <h3>Daily Data</h3>
+    <ejs-grid [dataSource]='stateHistorical'>
+      <e-columns>
+        <e-column field='date' headerText='Date' textAlign='Left'></e-column>
+        <e-column field='positive' headerText='Positive' format='N' textAlign='Center'></e-column>
+        <e-column field='positiveIncrease' headerText='Positive Increase' format='N'  textAlign='Center'></e-column>
+        <e-column field='totalTestResults' headerText='Total' format='N' textAlign='Center'></e-column>
+        <e-column field='totalTestResultsIncrease' headerText='Total Increase' format='N' textAlign='Center'></e-column>
+        <e-column field='death' headerText='Death' format='N' textAlign='Center'></e-column>
+      </e-columns>
+  </ejs-grid> 
+</div>

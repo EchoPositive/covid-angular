@@ -1,0 +1,27 @@
+<div>
+    <h3>States collection</h3>
+    <div class="row">
+      <div class="col-sm-4" *ngFor="let state of statesCurrent | async">
+        <a routerLink="stateInfo/{{state.state}}">
+        <div tablindex="0" class = "e-card" >        
+            <div class="e-card-title">{{state.state}}</div>
+                
+            <div class="e-card-header">       
+                <div class="e-card-header-caption">    
+                    <div class="e-card-header-title">Postitive: {{state.positive | number}} ({{state.positive / state.totalTestResults | percent:'1.2-2'}})</div>
+                    <div class="e-card-sub-title">Total: {{state.totalTestResults | number}}</div>                    
+                </div>
+            </div>
+            <div class="e-card-separator"></div>
+            <div class="e-card-content">
+                <p>Deaths: {{state.death | number}}</p>
+                <p>Hospitalized - Currently ({{state.hospitalizedCurrently | number}}) / Cumulative ({{state.hospitalizedCumulative | number}})</p>
+                <p>Recovered: {{state.recovered | number}}</p>
+                <p>Grade: {{state.grade}}</p>
+                <p>Data Quality Grade: {{state.dataQualityGrade}}</p>
+            </div> 
+        </div>
+        </a>
+      </div>
+    </div>
+</div>
