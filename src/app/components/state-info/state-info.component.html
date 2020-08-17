@@ -1,21 +1,30 @@
 <div>
     <h3>State [{{stateId}}] Historical Data</h3>
 
-    <ejs-chart id="chart-container" [primaryXAxis]='primaryXAxis' [tooltip]='tooltip' [title]='title'>
-      <e-series-collection>
-        <e-series [dataSource]='stateHistorical' type='Line' xName='date' yName='positive' name='Positive'></e-series>
-      </e-series-collection>
-    </ejs-chart>
-
     <h3>Daily Data</h3>
-    <ejs-grid [dataSource]='stateHistorical'>
-      <e-columns>
-        <e-column field='date' headerText='Date' textAlign='Left'></e-column>
-        <e-column field='positive' headerText='Positive' format='N' textAlign='Center'></e-column>
-        <e-column field='positiveIncrease' headerText='Positive Increase' format='N'  textAlign='Center'></e-column>
-        <e-column field='totalTestResults' headerText='Total' format='N' textAlign='Center'></e-column>
-        <e-column field='totalTestResultsIncrease' headerText='Total Increase' format='N' textAlign='Center'></e-column>
-        <e-column field='death' headerText='Death' format='N' textAlign='Center'></e-column>
-      </e-columns>
-  </ejs-grid> 
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Positive</th>
+          <th>Positive Increase</th>
+          <th>Total Test Results</th>
+          <th>Total Increase</th>
+          <th>Death</th>
+          <th>Positive Percent</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let state of stateHistorical | async">
+          <td>{{state.date}}</td>
+          <td>{{state.positive | number}}</td>
+          <td>{{state.positiveIncrease | number}}</td>
+          <td>{{state.totalTestResults | number}}</td>
+          <td>{{state.totalTestResultsIncrease | number}}</td>
+          <td>{{state.death | number}}</td>
+          <td>{{state.positiveIncrease / state.totalTestResultsIncrease | percent:'1.2-2'}}</td>
+        </tr>
+      </tbody>
+    </table>
+
 </div>
