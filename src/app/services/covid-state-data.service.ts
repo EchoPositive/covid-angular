@@ -13,14 +13,14 @@ export class CovidStateDataService {
   ) { }
 
   getCurrentStateData(){
-    return this.http.get('https://covidtracking.com/api/v1/states/current.json');
+    return this.http.get('https://api.covidtracking.com/v1/states/current.json');
   }
 
   getHistoricalStateData(stateId){
-    return this.http.get('https://covidtracking.com/api/v1/states/' + stateId + '/daily.json');
+    return this.http.get('https://api.covidtracking.com/v1/states/' + stateId + '/daily.json');
   }
   
   getInformationStateData(){
-    return this.http.get('https://covidtracking.com/api/v1/states/info.json');
+    return this.http.get('https://api.covidtracking.com/v1/states/info.json');
   }
 }

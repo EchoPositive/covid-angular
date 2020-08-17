@@ -15,10 +15,7 @@ const SERVICE_URI: string = 'https://ej2services.syncfusion.com/production/web-s
 })
 export class StateInfoComponent implements OnInit {
   stateId;
-  public stateHistorical: Object[];
-  primaryXAxis: Object;
-  public tooltip: Object;
-  public title: string;
+  stateHistorical;
   constructor(
     private covidStateDataService: CovidStateDataService,
     private route: ActivatedRoute,
@@ -28,16 +25,10 @@ export class StateInfoComponent implements OnInit {
     this.stateId = this.route.snapshot.params.stateId;
     console.log(this.stateId);
 
-    new DataManager({ url: 'https://covidtracking.com/api/v1/states/' + this.stateId + '/daily.json', adaptor: new ODataAdaptor() })
-      .executeQuery(new Query().take(8)).then((e: ReturnOption) => this.stateHistorical = e.result as object[]).catch((e) => true);
-
-    this.title = 'Historical Positive Tests';
-    this.primaryXAxis = {
-      valueType: 'Category'
-    };
-    this.tooltip = {
-        enable: true
-    };
+    
+    this.stateHistorical = this.covidStateDataService.getHistoricalStateData(this.stateId);
+    // this.stateHistorical = this.covidStateDataService.getHistoricalMnStateData();
+    // console.log(this.stateHistorical);
   }
 
 }
