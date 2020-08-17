@@ -28,7 +28,7 @@ export class StateInfoComponent implements OnInit {
     this.stateId = this.route.snapshot.params.stateId;
     console.log(this.stateId);
 
-    new DataManager({ url: 'https://covidtracking.com/api/v1/states/' + this.stateId + '/daily.json', adaptor: new ODataAdaptor() })
+    new DataManager({ url: 'https://api.covidtracking.com/v1/states/' + this.stateId + '/daily.json', adaptor: new ODataAdaptor() })
       .executeQuery(new Query().take(8)).then((e: ReturnOption) => this.stateHistorical = e.result as object[]).catch((e) => true);
 
     this.title = 'Historical Positive Tests';
