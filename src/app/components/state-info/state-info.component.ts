@@ -5,7 +5,6 @@ import { DataManager, WebApiAdaptor, UrlAdaptor, ODataAdaptor, Query, ReturnOpti
 import { ChartModule } from '@syncfusion/ej2-angular-charts';
 import 'rxjs/Rx';
 
-
 const SERVICE_URI: string = 'https://ej2services.syncfusion.com/production/web-services/';
 
 @Component({
