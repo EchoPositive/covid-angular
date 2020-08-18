@@ -5,9 +5,6 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class CovidStateDataService {
-  temp;
-  tempTwo;
-  tempThree;
   constructor(
     private http: HttpClient
   ) { }
